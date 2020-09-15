@@ -24,6 +24,7 @@
   position: relative;
   text-align: center;
 
+  overflow-x: auto;
   font-size: 1.5rem;
   padding: var(--bars-padding) var(--bars-padding) 0 var(--bars-padding);
   height: 7rem;
@@ -46,7 +47,7 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: auto;
 
   @include mq($small-only) {
     top: 0;
