@@ -95,16 +95,20 @@ class NavBar extends PureComponent {
 
 
   // added by prince
-  static handleHandRaise(amIModerator, amIPresenter, amIViewer,User) {
+  static handleHandRaise(amIModerator, amIPresenter, amIViewer,User,isPublicChatDisble) {
 
-	  if (amIModerator) {
-		  ChatService.sendGroupMessage('Moderator : Hand raised');
-	  } else if (amIPresenter) {
-		  ChatService.sendGroupMessage('Presenter :Hand raised');
-	  } else {
-      ChatService.sendGroupMessage(' Hand raised');
-    }
+    if(!isPublicChatDisble)
+    {
+	     if (amIModerator) {
+		      ChatService.sendGroupMessage('Moderator : Hand raised');
+	      } else if (amIPresenter) {
+		      ChatService.sendGroupMessage('Presenter :Hand raised');
+	      } else {
+          ChatService.sendGroupMessage(' Hand raised');
+      }
+    } 
     UserLiseServices.setEmojiStatus(User._id,'raiseHand')
+  
   }
   
   // added by prince
@@ -253,8 +257,6 @@ isVideoLocked = (id) => {
 
     let ariaLabel = intl.formatMessage(intlMessages.toggleUserListAria);
     ariaLabel += hasUnreadMessages ? (` ${intl.formatMessage(intlMessages.newMessages)}`) : '';
-      
-
 
     return (
       <div className={styles.navbar}>
@@ -277,7 +279,8 @@ isVideoLocked = (id) => {
           <div className={styles.left}> 
             <Button
               data-test="userListToggleButton"
-              onClick={() => NavBar.handleHandRaise(amIModerator, amIPresenter, amIViewer,User)}
+              onClick={() => NavBar.handleHandRaise(amIModerator, 
+                amIPresenter, amIViewer,User,meeting.lockSettingsProps.disablePublicChat)}
               ghost
               circle
               hideLabel
