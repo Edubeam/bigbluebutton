@@ -276,30 +276,7 @@ isVideoLocked = (id) => {
               accessKey={TOGGLE_USERLIST_AK}
             />
           </div>
-          <div className={styles.left}> 
-            <Button
-              data-test="userListToggleButton"
-              onClick={() => NavBar.handleHandRaise(amIModerator, 
-                amIPresenter, amIViewer,User,meeting.lockSettingsProps.disablePublicChat)}
-              ghost
-              circle
-              hideLabel
-              label={intl.formatMessage(intlMessages.raiseHandbel)}
-              aria-label={ariaLabel}
-              icon="hand"
-              className={cx(toggleBtnClasses)}
-              aria-expanded={isExpanded}
-              accessKey={TOGGLE_USERLIST_AK}
-            />
-          </div>
-          <div className={styles.left}>
-            { this.ShowWebcamToggleButton(amIViewer,intl,meeting) }
-        
-          </div>
-          <div className={styles.left}>
-            { this.ShowAudioToggleButton(amIViewer,intl,meeting) }
-        
-          </div>
+      
           <div className={styles.center}>
             <h1 className={styles.presentationTitle}>{presentationTitle}</h1>
 
@@ -312,9 +289,33 @@ isVideoLocked = (id) => {
             <SettingsDropdownContainer amIModerator={amIModerator} />
           </div>
         </div>
-        <div className={styles.bottom}>
-          <TalkingIndicatorContainer amIModerator={amIModerator} />
-        </div>
+        <div className={styles.newButton}>
+            <div className={styles.left}> 
+              <Button
+                data-test="userListToggleButton"
+                onClick={() => NavBar.handleHandRaise(amIModerator, 
+                  amIPresenter, amIViewer,User,meeting.lockSettingsProps.disablePublicChat)}
+                ghost
+                circle
+                hideLabel
+                label={intl.formatMessage(intlMessages.raiseHandbel)}
+                aria-label={ariaLabel}
+                icon="hand"
+                className={cx(toggleBtnClasses)}
+                aria-expanded={isExpanded}
+                accessKey={TOGGLE_USERLIST_AK}
+              />
+            </div>
+            <div className={styles.left}>
+              { this.ShowWebcamToggleButton(amIViewer,intl,meeting) }
+            </div>
+            <div className={styles.left}>
+              { this.ShowAudioToggleButton(amIViewer,intl,meeting) }
+            </div>
+            <div className={styles.bottom}>
+              <TalkingIndicatorContainer amIModerator={amIModerator} />
+            </div>
+          </div>
       </div>
     );
   }

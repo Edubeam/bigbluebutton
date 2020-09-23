@@ -1,7 +1,7 @@
 @import "../../stylesheets/variables/_all";
 
 :root {
-  --mobile-nav-height: 5rem;
+  --mobile-nav-height: 6rem;
   --mobile-margin-top: .25rem;
   --arrow-l-left: 	1.1rem;
   --arrow-r-left: 2.5rem;
@@ -118,6 +118,11 @@
     }
   }
 }
+.newButton{
+  display: flex;
+  flex-direction: row;
+}
 
 .btnSettings {
 }
+

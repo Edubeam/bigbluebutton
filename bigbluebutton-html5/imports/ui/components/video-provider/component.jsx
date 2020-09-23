@@ -122,6 +122,7 @@ const propTypes = {
   enableVideoStats: PropTypes.bool.isRequired,
   userIsLocked: PropTypes.bool.isRequired,
   userHasStream: PropTypes.bool.isRequired,
+  IsPresenterChanged: PropTypes.bool.isRequired, // added by prince  
 };
 
 class VideoProvider extends Component {
@@ -306,6 +307,8 @@ class VideoProvider extends Component {
       users,
       userIsLocked,
       userHasStream,
+      IsPresenterChanged,
+      userId,
     } = this.props;
     if (!prevProps.userIsLocked && userIsLocked && userHasStream) VideoService.exitVideo();
     if (users.length !== prevProps.users.length)
@@ -348,6 +351,11 @@ class VideoProvider extends Component {
       }
     }
     
+    if(IsPresenterChanged)
+    {
+      window.dispatchEvent(new Event('presenterChanged')); 
+    //  Userss.update({_id: userId}, {$set: {presenterIsChanged: false}}, {multi: false});
+    }
   }
 
   

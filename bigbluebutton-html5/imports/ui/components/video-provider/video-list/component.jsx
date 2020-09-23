@@ -137,9 +137,17 @@ class VideoList extends Component {
 
       if( currentUser.presenter ) // focus video of presenter
       {
-        // if presenter is not sharing vide and focusid = its userId then clear focusId value before calling handleVideoFocus
-        if( focusedId == currentUser.userId ) focusedId =""; 
         IsPresenterSharingVideo = true;
+
+        // if presenter is not sharing video and focusid = its userId then clear focusId value before calling handleVideoFocus
+        if( focusedId == currentUser.userId ) {
+       //   this.setState({
+        //    focusedId: "",
+         // })
+         return;
+        }
+        
+        //IsPresenterSharingVideo = true;
         this.handleVideoFocus(currentUser.userId);
       }
   }

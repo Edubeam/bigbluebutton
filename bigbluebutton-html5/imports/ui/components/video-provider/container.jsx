@@ -24,6 +24,9 @@ export default withTracker(props => ({
     locked: true,
     role: { $ne: ROLE_MODERATOR },
   }, { fields: {} }) && VideoService.webcamsLocked(),
+  IsPresenterChanged: !!Users.findOne({
+    presenterIsChanged: true,
+    meetingId: VideoService.meetingId(),}, { fields: {} } ),
   userHasStream: !!VideoStreams.findOne({ userId: Auth.userID }, { fields: {} }),
   userName: Auth.fullname,
   sessionToken: VideoService.sessionToken(),
