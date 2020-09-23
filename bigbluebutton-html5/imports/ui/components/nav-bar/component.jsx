@@ -75,10 +75,9 @@ class NavBar extends PureComponent {
   constructor(props) { // added by prince
     super(props);
 
-    const { meeting: { lockSettingsProps, usersProp } } = this.props;
+    const { meeting: { usersProp } } = this.props;
 
     this.state = {
-      lockSettingsProps,
       usersProp,
     };
   }
@@ -112,28 +111,21 @@ class NavBar extends PureComponent {
   }
   
   // added by prince
-  handleAudioToggleButton() {
+  handleAudioToggleButton(MeetinglockSettingProps) {
     const { updateLockSettings } = this.props;
-    const { lockSettingsProps } = this.state;
+    var lockSettingsProps  = MeetinglockSettingProps;
 
     lockSettingsProps['disableMic'] = !lockSettingsProps['disableMic'];
-    this.setState({
-      lockSettingsProps,
-    });
 
     updateLockSettings(lockSettingsProps);
   }
   
   // added by prince
-    handleWebcamToggleButton() {
+    handleWebcamToggleButton(MeetinglockSettingProps) {
     const { updateLockSettings } = this.props;
-    const { lockSettingsProps } = this.state;
+    var lockSettingsProps  = MeetinglockSettingProps;
 
     lockSettingsProps['disableCam'] = !lockSettingsProps['disableCam'];
-    this.setState({
-      lockSettingsProps,
-    });
-
     updateLockSettings(lockSettingsProps);
   }
 
@@ -168,14 +160,14 @@ isVideoLocked = (id) => {
 };
 
    // added by prince     
-  ShowWebcamToggleButton(amIViewer,intl,meeting)
+  ShowWebcamToggleButton(amIViewer,intl,meeting,MeetinglockSettingProps)
    {
      if(!amIViewer)
      {
        return(
          <Button
                    data-test="userListToggleButton"
-                   onClick={() => this.handleWebcamToggleButton()}
+                   onClick={() => this.handleWebcamToggleButton(MeetinglockSettingProps)}
                    ghost
                    circle
                    hideLabel
@@ -191,14 +183,14 @@ isVideoLocked = (id) => {
    }
 
      // added by prince     
-  ShowAudioToggleButton(amIViewer,intl,meeting)
+  ShowAudioToggleButton(amIViewer,intl,meeting,MeetinglockSettingProps)
   {
     if(!amIViewer)
     {
       return(
         <Button
                   data-test="userListToggleButton"
-                  onClick={() => this.handleAudioToggleButton()}
+                  onClick={() => this.handleAudioToggleButton(MeetinglockSettingProps)}
                   ghost
                   circle
                   hideLabel
@@ -307,10 +299,10 @@ isVideoLocked = (id) => {
               />
             </div>
             <div className={styles.left}>
-              { this.ShowWebcamToggleButton(amIViewer,intl,meeting) }
+              { this.ShowWebcamToggleButton(amIViewer,intl,meeting,meeting.lockSettingsProps) }
             </div>
             <div className={styles.left}>
-              { this.ShowAudioToggleButton(amIViewer,intl,meeting) }
+              { this.ShowAudioToggleButton(amIViewer,intl,meeting,meeting.lockSettingsProps) }
             </div>
             <div className={styles.bottom}>
               <TalkingIndicatorContainer amIModerator={amIModerator} />
