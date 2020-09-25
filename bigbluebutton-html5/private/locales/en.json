@@ -277,6 +277,7 @@
     "app.endMeeting.noLabel": "No",
     "app.about.title": "About",
     "app.about.version": "Client build:",
+    "app.about.edumeetVersion": "Edumeet Version:",
     "app.about.copyright": "Copyright:",
     "app.about.confirmLabel": "OK",
     "app.about.confirmDesc": "OK",

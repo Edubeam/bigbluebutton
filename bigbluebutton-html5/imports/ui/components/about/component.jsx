@@ -11,6 +11,10 @@ const intlMessages = defineMessages({
     id: 'app.about.version',
     description: 'Client version label',
   },
+  edumeetVersion: {
+    id: 'app.about.edumeetVersion',
+    description: 'edumeet Version label',
+  },
   copyright: {
     id: 'app.about.copyright',
     defaultMessage: (new Date().getFullYear()),
@@ -43,7 +47,7 @@ const AboutComponent = ({ intl, clientBuild, copyright }) => (
     }}
   >
     {`${intl.formatMessage(intlMessages.copyright)} ${copyright}`} <br />
-    {`${intl.formatMessage(intlMessages.version)} ${clientBuild}`}
+    {`${intl.formatMessage(intlMessages.edumeetVersion)} ${clientBuild}`}
   </Modal>
 );
 
